@@ -5,6 +5,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
 		<link rel="stylesheet" href="./styles.css" />
+		<link
+			rel="shortcut icon"
+			href="./assets/icons/logo.svg"
+			type="image/x-icon" />
 	</head>
 	<body>
 		<header class="header">
@@ -12,9 +16,7 @@
 				<div class="brand"></div>
 				<h1>PlayTracker <span id="subscription">Pro</span></h1>
 			</div>
-		</header>
-		<section class="control-bar">
-			<div class="buttons">
+			<section class="control-bar">
 				<button class="btn">
 					Add Game
 					<span class="add"></span>
@@ -23,17 +25,9 @@
 					Remove All Games
 					<span class="remove"></span>
 				</button>
-			</div>
-			<div class="filter">
-				<label for="filter-games">Filter: </label>
-				<select name="filter-games" id="filter-games">
-					<option value="" selected disabled>Select Filter</option>
-					<option value="all">All Games</option>
-					<option value="completed">Completed Games</option>
-					<option value="not-completed">Not Completed Games</option>
-				</select>
-			</div>
-		</section>
+			</section>
+		</header>
+
 		<main class="game-library"></main>
 		<script src="./script.js"></script>
 	</body>
