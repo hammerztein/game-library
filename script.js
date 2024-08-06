@@ -1,4 +1,10 @@
 // DOM
+const modalContainer = document.querySelector('.modal-container');
+const closeModalBtn = modalContainer.querySelector('.close');
+const addGameBtn = document.querySelector('#add-game');
+const removeGamesBtn = document.querySelector('#remove-games');
+const addGameForm = document.querySelector('.modal-form');
+const addGameFormBtn = document.querySelector('.modal-form button');
 
 // Library array
 const gameLibrary = [];
@@ -15,4 +21,16 @@ Game.prototype.isCompleted = function () {
 	this.completed = !this.completed;
 };
 
-const vidya = new Game('marvel midnight suns', '', true);
+// Functions
+function openModal() {
+	modalContainer.showModal();
+}
+
+function closeModal() {
+	modalContainer.close();
+}
+
+// Event listeners
+addGameBtn.addEventListener('click', openModal);
+
+closeModalBtn.addEventListener('click', closeModal);
