@@ -229,15 +229,17 @@ body {
 
 /* DIALOG MODAL */
 .modal-container[open] {
-	position: absolute;
-	z-index: 1;
-	top: 0;
-	height: 100%;
-	width: 100%;
-	background-color: #00000060;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background: none;
+	border: none;
+	width: 100%;
+	height: 100%;
+}
+
+.modal-container[open]::backdrop {
+	background-color: #00000060;
 }
 
 .modal-box {
@@ -291,6 +293,6 @@ body {
 	color: var(--accent-300);
 }
 
-.modal-input input.validate + span {
+.modal-input input:invalid.validate + span {
 	display: inline-block;
 }
