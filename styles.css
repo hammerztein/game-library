@@ -132,3 +132,90 @@ body {
 .btn .remove {
 	mask: url(./assets/icons/delete.svg);
 }
+
+/* MAIN CONTAINER */
+.game-library {
+	padding: var(--spacing-xl);
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 300px);
+	gap: var(--spacing-xl);
+}
+
+.card {
+	background-color: var(--bg-dark);
+	padding: var(--spacing-m) var(--spacing-l);
+	color: var(--text-light);
+	border-radius: var(--border-radius);
+	box-shadow: 2px 2px 8px #00000050;
+	display: grid;
+	grid-template-rows: auto 2fr;
+	gap: var(--spacing-l);
+}
+
+.card-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.card-title .close {
+	mask: url(./assets/icons/close.svg);
+	height: 24px;
+	width: 24px;
+	background-color: var(--text-light);
+	cursor: pointer;
+	transition: var(--transition);
+}
+
+.card-title .close:hover {
+	transform: rotate(180deg);
+	background-color: var(--alert-800);
+}
+
+.card-body {
+	display: grid;
+	grid-template-rows: repeat(3, auto);
+	gap: var(--spacing-s);
+}
+
+.checkbox-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.checkbox-container label {
+	flex: 1;
+	cursor: pointer;
+}
+
+.checkbox-container input[type="checkbox"] {
+	appearance: none;
+	height: 21px;
+	width: 40px;
+	background-color: var(--alert-300);
+	border-radius: 20px;
+	position: relative;
+		transition: var(--transition);
+}
+
+.checkbox-container input[type="checkbox"]::before {
+	content: "";
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	height: 16px;
+	width: 16px;
+	border-radius: 20px;
+	background: var(--alert-800);
+	transition: var(--transition);
+}
+
+.checkbox-container input[type="checkbox"]:checked {
+	background-color: var(--success-300);
+}
+
+.checkbox-container input[type="checkbox"]:checked::before {
+	left: 21px;
+	background-color: var(--success-800);
+}
+
