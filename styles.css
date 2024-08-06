@@ -37,9 +37,12 @@ button, select, input {
 	outline: none;
 	border: none;
 	background: none;
-	cursor: pointer;
 	font: inherit;
 	color: inherit;
+}
+
+button, select, input[type="checkbox"] {
+	cursor: pointer;
 }
 
 body {
@@ -141,24 +144,27 @@ body {
 	gap: var(--spacing-xl);
 }
 
-.card {
+.card,
+.modal-box {
 	background-color: var(--bg-dark);
 	padding: var(--spacing-m) var(--spacing-l);
 	color: var(--text-light);
 	border-radius: var(--border-radius);
 	box-shadow: 2px 2px 8px #00000050;
 	display: grid;
-	grid-template-rows: auto 2fr;
 	gap: var(--spacing-l);
+	grid-template-rows: auto 2fr;
 }
 
-.card-title {
+.card-title,
+.modal-title {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
 
-.card-title .close {
+.card-title .close,
+.modal-title .close {
 	mask: url(./assets/icons/close.svg);
 	height: 24px;
 	width: 24px;
@@ -167,7 +173,8 @@ body {
 	transition: var(--transition);
 }
 
-.card-title .close:hover {
+.card-title .close:hover,
+.modal-title .close:hover {
 	transform: rotate(180deg);
 	background-color: var(--alert-800);
 }
@@ -183,7 +190,8 @@ body {
 	justify-content: space-between;
 }
 
-.checkbox-container label {
+.checkbox-container label,
+.modal-input.checkbox label {
 	flex: 1;
 	cursor: pointer;
 }
@@ -219,3 +227,70 @@ body {
 	background-color: var(--success-800);
 }
 
+/* DIALOG MODAL */
+.modal-container[open] {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: #00000060;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.modal-box {
+	min-width: 300px;
+}
+
+.modal-form {
+	display: grid;
+	gap: var(--spacing-l);
+}
+
+.modal-input:not(.checkbox) {
+	display: grid;
+	gap: var(--spacing-s);
+}
+
+.modal-input:not(.checkbox) input {
+	padding: var(--spacing-s);
+	background-color: var(--bg-light);
+	border-radius: var(--border-radius);
+	color: var(--text-dark);
+}
+
+.modal-input.checkbox {
+	margin-bottom: var(--spacing-m);
+	display: flex;
+}
+
+.modal-input input[type="checkbox"] {
+	height: 20px;
+	width: 20px;
+}
+
+.modal-input input.validate:invalid {
+	border:1px solid var(--alert-800);
+	background-color: var(--alert-300);
+}
+
+.modal-input input[type="checkbox"]:checked {
+	accent-color: var(--success-300);
+}
+
+.modal-form .btn {
+	padding: var(--spacing-s);
+	justify-content: center;
+}
+
+.error-text {
+	display: none;
+	font-size: 0.85rem;
+	color: var(--accent-300);
+}
+
+.modal-input input.validate + span {
+	display: inline-block;
+}
