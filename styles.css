@@ -7,15 +7,15 @@
 	--accent-800: #92400e;
 	--primary-300: #93c5fd;
 	--primary-800: #1e40af;
-	--bg-dark: #cbd5e1;
-	--bg-light: #1e293b;
+	--bg-light: #cbd5e1;
+	--bg-dark: #1e293b;
 	--text-light: #e5e7eb;
 	--text-dark: #374151;
 	--transition: all 0.2s ease-in-out;
-	--border-radius: 0.5rem;
+	--border-radius: 0.35rem;
 	--font-s: clamp(0.7rem, 1vw + 0.5rem, 1rem);
 	--font-m: clamp(1rem, 1.2vw + 0.5rem, 1.5rem);
-	--font-l: clamp(1.5rem, 2vw + 0.5rem, 2.5rem);
+	--font-l: clamp(1.5rem, 1.5vw + 0.5rem, 2.125rem);
 	--spacing-s: 0.5rem;
 	--spacing-m: 1rem;
 	--spacing-l: 1.5rem;
@@ -46,4 +46,89 @@ body {
 	height: 100dvh;
 	font-family: Montserrat, sans-serif;
 	background: linear-gradient(to top, #f1f5f9, #cbd5e1);
+}
+
+/* HEADER */
+.header {
+	background-color: var(--bg-dark);
+	box-shadow: 0 2px 8px #00000055;
+	color: var(--text-light);
+	padding: var(--spacing-s) var(--spacing-xl);
+	display: flex;
+	justify-content: space-between;
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-m);
+}
+
+.brand {
+	mask: url(./assets/icons/logo.svg);
+	background-color: var(--text-light);
+	width: 48px;
+	height: 48px;
+}
+
+.logo h1 {
+	font-size: var(--font-l);
+	position: relative;
+}
+
+#subscription {
+	position: absolute;
+	font-size: var(--font-s);
+	background-color: var(--accent-300);
+	border: 1px solid var(--accent-800);
+	border-radius: var(--border-radius);
+	padding: 0.125rem 0.375rem;
+	color: var(--text-dark);
+	top: 0px;
+	right: -50px;
+}
+
+.control-bar {
+	display: flex;
+	justify-content: space-evenly;
+	gap: var(--spacing-m);
+}
+
+.btn {
+	background-color: var(--primary-800);
+	border: 1px solid var(--primary-300);
+	border-radius: var(--border-radius);
+	padding: 0 var(--spacing-m);
+	transition: var(--transition);
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-s)
+}
+
+.btn .add,
+.btn .remove {
+	width: 20px;
+	height: 20px;
+	background-color: var(--text-light);
+	transition: var(--transition);
+}
+
+.btn:hover {
+	background-color: var(--primary-300);
+	color: var(--text-dark);
+}
+
+.btn:hover .add,
+.btn:hover .remove {
+	transform: rotate(180deg);
+	background-color: var(--text-dark);
+}
+
+.btn .add {
+	mask: url(./assets/icons/add-new.svg);
+}
+
+.btn .remove {
+	mask: url(./assets/icons/delete.svg);
 }
