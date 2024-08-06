@@ -43,6 +43,43 @@
 				</card>
 			</article>
 		</main>
+		<dialog class="modal-container">
+			<section class="modal-box">
+				<div class="modal-title">
+					<h3>Add A Game</h3>
+					<span class="close"></span>
+				</div>
+				<form class="modal-form">
+					<div class="modal-input">
+						<label for="game-name">Game Title: *</label>
+						<input
+							type="text"
+							name="game-name"
+							id="game-name"
+							required
+							placeholder="Super Mario Bros"
+							minlength="1" />
+						<span class="error-text">Please input a valid title</span>
+					</div>
+					<div class="modal-input">
+						<label for="game-hours">Hours Played (<em>optional</em>): </label>
+						<input
+							type="text"
+							name="game-hours"
+							id="game-hours"
+							placeholder="10" />
+					</div>
+					<div class="modal-input checkbox">
+						<label for="game-completion">Completed (<em>optional</em>): </label>
+						<input
+							type="checkbox"
+							name="game-completion"
+							id="game-completion" />
+					</div>
+					<button class="btn" type="submit">Add To Library</button>
+				</form>
+			</section>
+		</dialog>
 		<script src="./script.js"></script>
 	</body>
 </html>
