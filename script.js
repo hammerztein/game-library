@@ -21,7 +21,7 @@ Game.prototype.isCompleted = function () {
 	this.completed = !this.completed;
 };
 
-// Functions
+// Open & Close modal
 function openModal() {
 	modalContainer.showModal();
 }
@@ -29,6 +29,7 @@ function openModal() {
 function closeModal() {
 	modalContainer.close();
 	removeValidationClass();
+	resetFormInputs();
 }
 
 // Add & Remove validation classes
@@ -40,6 +41,17 @@ function addValidationClass() {
 function removeValidationClass() {
 	const requiredInputs = document.querySelector('.modal-input input[required]');
 	requiredInputs.classList.remove('validate');
+}
+
+// Clean inputs
+function resetFormInputs() {
+	const formInputs = document.querySelectorAll(
+		'.modal-input:not(.checkbox) input',
+	);
+	const formCheckbox = document.querySelector('.modal-input.checkbox input');
+
+	formInputs.forEach((input) => (input.value = ''));
+	formCheckbox.checked = false;
 }
 
 // Event listeners
