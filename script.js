@@ -67,7 +67,7 @@ function resetFormInputs() {
 function getUserInputs() {
 	const gameName = addGameForm.querySelector('#game-name').value;
 	const gameHours = addGameForm.querySelector('#game-hours').value || 0;
-	const gameCompleted = addGameForm.querySelector('#game-name').checked;
+	const gameCompleted = addGameForm.querySelector('#game-completion').checked;
 
 	return { gameName, gameHours, gameCompleted };
 }
