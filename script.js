@@ -149,6 +149,11 @@ function removeGameFromLibrary(id) {
 	gameLibrary.splice(gameIndex, 1);
 }
 
+function removeAllGamesFromLibrary() {
+	gameLibrary.splice(0, gameLibrary.length);
+	gameLibraryContainer.innerText = '';
+}
+
 // Event listeners
 addGameBtn.addEventListener('click', openModal);
 
@@ -158,9 +163,9 @@ addGameFormBtn.addEventListener('click', () => {
 	addValidationClass();
 });
 
-addGameForm.addEventListener('submit', (event) => {
-	addGameToLibrary(event);
-});
+addGameForm.addEventListener('submit', addGameToLibrary);
+
+removeGamesBtn.addEventListener('click', removeAllGamesFromLibrary);
 
 // Helper event listener to display game library array
 document.addEventListener('keyup', (event) => {
