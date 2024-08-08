@@ -27,22 +27,7 @@
 				</button>
 			</section>
 		</header>
-		<main class="game-library">
-			<article class="card">
-				<div class="card-title">
-					<h3>Video Game</h3>
-					<span class="close"></span>
-				</div>
-				<div class="card-body">
-					<p id="game-title">Marvel Midnight Suns</p>
-					<p>Hours Played<span id="game-hours"> 15h</span></p>
-					<div class="checkbox-container">
-						<label for="game-status-1">Completed: </label>
-						<input type="checkbox" name="game-status" id="game-status-1" />
-					</div>
-				</div>
-			</article>
-		</main>
+		<main class="game-library"></main>
 		<dialog class="modal-container">
 			<section class="modal-box">
 				<div class="modal-title">
@@ -64,10 +49,15 @@
 					<div class="modal-input">
 						<label for="game-hours">Hours Played (<em>optional</em>): </label>
 						<input
-							type="text"
+							type="number"
 							name="game-hours"
 							id="game-hours"
+							min="0"
+							max="999999999"
 							placeholder="10" />
+						<span class="error-text"
+							>Please input a valid number between 0 and 999999999</span
+						>
 					</div>
 					<div class="modal-input checkbox">
 						<label for="game-completion">Completed (<em>optional</em>): </label>
