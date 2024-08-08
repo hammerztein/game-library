@@ -28,9 +28,25 @@ function openModal() {
 
 function closeModal() {
 	modalContainer.close();
+	removeValidationClass();
+}
+
+// Add & Remove validation classes
+function addValidationClass() {
+	const requiredInputs = document.querySelector('.modal-input input[required]');
+	requiredInputs.classList.add('validate');
+}
+
+function removeValidationClass() {
+	const requiredInputs = document.querySelector('.modal-input input[required]');
+	requiredInputs.classList.remove('validate');
 }
 
 // Event listeners
 addGameBtn.addEventListener('click', openModal);
 
 closeModalBtn.addEventListener('click', closeModal);
+
+addGameFormBtn.addEventListener('click', () => {
+	addValidationClass();
+});
