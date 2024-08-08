@@ -44,13 +44,17 @@ function closeModal() {
 
 // Add & Remove validation classes
 function addValidationClass() {
-	const requiredInputs = document.querySelector('.modal-input input[required]');
-	requiredInputs.classList.add('validate');
+	const requiredInputs = document.querySelectorAll(
+		'.modal-input:not(.checkbox) input',
+	);
+	requiredInputs.forEach((input) => input.classList.add('validate'));
 }
 
 function removeValidationClass() {
-	const requiredInputs = document.querySelector('.modal-input input[required]');
-	requiredInputs.classList.remove('validate');
+	const requiredInputs = document.querySelectorAll(
+		'.modal-input:not(.checkbox) input',
+	);
+	requiredInputs.forEach((input) => input.classList.remove('validate'));
 }
 
 // Clean inputs
