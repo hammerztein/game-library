@@ -80,7 +80,7 @@ function renderNewCard(object) {
 	const cardH3 = document.createElement('h3');
 	const removeBtn = document.createElement('span');
 	const cardBody = document.createElement('div');
-	const gameTitle = document.createElement('p');
+	const gameTitle = document.createElement('h4');
 	const gameHoursContainer = document.createElement('p');
 	const gameHours = document.createElement('span');
 	const completionContainer = document.createElement('div');
@@ -109,6 +109,17 @@ function renderNewCard(object) {
 	completionContainer.append(completionLabel, completionCheckbox);
 	cardBody.append(gameTitle, gameHoursContainer, completionContainer);
 
+	// Remove element
+	removeBtn.addEventListener('click', () => {
+		card.remove();
+		removeGameFromLibrary(object.id);
+	});
+
+	// Change completions status
+	completionCheckbox.addEventListener('click', () => {
+		object.isCompleted();
+	});
+
 	card.append(cardTitle, cardBody);
 
 	gameLibraryContainer.appendChild(card);
@@ -129,6 +140,11 @@ function addGameToLibrary(event) {
 	closeModal();
 }
 
+function removeGameFromLibrary(id) {
+	const gameIndex = gameLibrary.findIndex((game) => game.id === id);
+	gameLibrary.splice(gameIndex, 1);
+}
+
 // Event listeners
 addGameBtn.addEventListener('click', openModal);
 
@@ -140,4 +156,11 @@ addGameFormBtn.addEventListener('click', () => {
 
 addGameForm.addEventListener('submit', (event) => {
 	addGameToLibrary(event);
+});
+
+// Helper event listener to display game library array
+document.addEventListener('keyup', (event) => {
+	if (event.key === 'p') {
+		console.log(gameLibrary);
+	}
 });
