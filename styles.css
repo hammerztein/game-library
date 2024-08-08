@@ -250,7 +250,7 @@ body {
 }
 
 .modal-box {
-	min-width: 300px;
+	width: 300px;
 }
 
 .modal-form {
@@ -301,4 +301,5 @@ body {
 
 .modal-input input.validate:invalid + span {
 	display: inline-block;
+	text-wrap: balance;
 }
