@@ -293,6 +293,6 @@ body {
 	color: var(--accent-300);
 }
 
-.modal-input input:invalid.validate + span {
+.modal-input input.validate:invalid + span {
 	display: inline-block;
 }
