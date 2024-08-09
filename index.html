@@ -19,14 +19,47 @@
 			<section class="control-bar">
 				<button class="btn" id="add-game">
 					Add Game
-					<span class="add"></span>
+					<span class="add-icon"></span>
 				</button>
 				<button class="btn" id="remove-games">
 					Remove All Games
-					<span class="remove"></span>
+					<span class="remove-icon"></span>
+				</button>
+				<button class="btn" id="show-filter">
+					Show Filter Bar
+					<span class="filter-icon"></span>
 				</button>
 			</section>
 		</header>
+		<section class="filter-bar">
+			<div class="filters">
+				<div class="filter">
+					<label for="filter-completion">Completion: </label>
+					<select name="filter-completion" id="filter-completion">
+						<option value="" selected disabled>Select Status</option>
+						<option value="all">All</option>
+						<option value="completed">Completed</option>
+						<option value="all">Not Completed</option>
+					</select>
+				</div>
+				<div class="filter">
+					<label for="filter-platform">Platform: </label>
+					<select name="filter-platform" id="filter-platform">
+						<option value="" selected disabled>Select Platform</option>
+						<option value="PC">PC</option>
+						<option value="PS">Playstation</option>
+						<option value="Xbox">Xbox</option>
+						<option value="Nintendo">Nintendo</option>
+					</select>
+				</div>
+			</div>
+			<div class="stats">
+				<p>Total Amount Of Games Added: <span id="total-added"></span></p>
+				<p>Games In Library: <span id="total-current"></span></p>
+				<p>Completed Games: <span id="games-completed"></span></p>
+				<p>Not Completed Games: <span id="games-not-completed"></span></p>
+			</div>
+		</section>
 		<main class="game-library"></main>
 		<dialog class="modal-container">
 			<section class="modal-box">
@@ -51,7 +84,7 @@
 						<select name="game-platform" id="game-platform" required>
 							<option value="" selected disabled>Select Platform</option>
 							<option value="PC">PC</option>
-							<option value="PS5">Playstation</option>
+							<option value="PS">Playstation</option>
 							<option value="Xbox">Xbox</option>
 							<option value="Nintendo">Nintendo</option>
 						</select>
