@@ -363,6 +363,12 @@ body {
 	background-color: var(--alert-300);
 }
 
+.modal-input:not(.checkbox) input:focus-within,
+.modal-input select:focus-within {
+	border: 1px solid var(--accent-300);
+	box-shadow: 0 0 5px 1px var(--accent-300);
+}
+
 .modal-input input[type="checkbox"]:checked {
 	accent-color: var(--success-300);
 }
