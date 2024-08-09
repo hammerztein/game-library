@@ -47,6 +47,17 @@
 						<span class="error-text">Please input a valid title</span>
 					</div>
 					<div class="modal-input">
+						<label for="game-platform">Game Platform: *</label>
+						<select name="game-platform" id="game-platform" required>
+							<option value="" selected disabled>Select Platform</option>
+							<option value="PC">PC</option>
+							<option value="PS5">Playstation</option>
+							<option value="Xbox">Xbox</option>
+							<option value="Nintendo">Nintendo</option>
+						</select>
+						<span class="error-text">Please select a platform</span>
+					</div>
+					<div class="modal-input">
 						<label for="game-hours">Hours Played (<em>optional</em>): </label>
 						<input
 							type="number"
