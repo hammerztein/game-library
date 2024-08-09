@@ -228,10 +228,3 @@ completionFilter.addEventListener('change', (e) => {
 });
 
 displayStats();
-
-// Helper event listener to display game library array
-document.addEventListener('keyup', (event) => {
-	if (event.key === 'p') {
-		console.log(gameLibrary);
-	}
-});
