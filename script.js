@@ -8,6 +8,7 @@ const addGameForm = document.querySelector('.modal-form');
 const addGameFormBtn = document.querySelector('.modal-form button');
 const filterBarBtn = document.querySelector('#show-filter');
 const filterBar = document.querySelector('.filter-bar');
+const completionFilter = filterBar.querySelector('#filter-completion');
 
 // Library array
 const gameLibrary = [];
@@ -185,6 +186,27 @@ function displayStats() {
 	notCompletedGamesEl.textContent = notCompletedGames;
 }
 
+function filterGamesByStatus(status) {
+	const cards = document.querySelectorAll('.card');
+
+	cards.forEach((card) => {
+		const gameStatus = card.querySelector("input[type='checkbox']").checked;
+		// Hide card
+		card.style.display = 'none';
+		// Display card on a condition
+		if (status === 'all') {
+			card.style.display = 'grid';
+		}
+
+		if (status === 'completed' && gameStatus) {
+			card.style.display = 'grid';
+		}
+
+		if (status === 'not-completed' && !gameStatus) {
+			card.style.display = 'grid';
+		}
+	});
+}
 // Event listeners
 addGameBtn.addEventListener('click', openModal);
 
@@ -199,6 +221,11 @@ addGameForm.addEventListener('submit', addGameToLibrary);
 removeGamesBtn.addEventListener('click', removeAllGamesFromLibrary);
 
 filterBarBtn.addEventListener('click', toggleFilterBar);
+
+completionFilter.addEventListener('change', (e) => {
+	const filter = e.target.value;
+	filterGamesByStatus(filter);
+});
 
 displayStats();
 
