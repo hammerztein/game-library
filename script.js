@@ -6,6 +6,8 @@ const addGameBtn = document.querySelector('#add-game');
 const removeGamesBtn = document.querySelector('#remove-games');
 const addGameForm = document.querySelector('.modal-form');
 const addGameFormBtn = document.querySelector('.modal-form button');
+const filterBarBtn = document.querySelector('#show-filter');
+const filterBar = document.querySelector('.filter-bar');
 
 // Library array
 const gameLibrary = [];
@@ -41,6 +43,10 @@ function closeModal() {
 	modalContainer.close();
 	removeValidationClass();
 	resetFormInputs();
+}
+
+function toggleFilterBar() {
+	filterBar.classList.toggle('hidden');
 }
 
 // Add & Remove validation classes
@@ -121,6 +127,7 @@ function renderNewCard(object) {
 	// Change completions status
 	completionCheckbox.addEventListener('click', () => {
 		object.isCompleted();
+		displayStats();
 	});
 
 	card.append(cardTitle, cardBody);
@@ -139,6 +146,8 @@ function addGameToLibrary(event) {
 	gameLibrary.push(newGame);
 	// Render object to the screen
 	renderNewCard(newGame);
+	// Display stats on filter bar
+	displayStats();
 	// Close modal on form submit
 	closeModal();
 }
@@ -146,11 +155,34 @@ function addGameToLibrary(event) {
 function removeGameFromLibrary(id) {
 	const gameIndex = gameLibrary.findIndex((game) => game.id === id);
 	gameLibrary.splice(gameIndex, 1);
+	displayStats();
 }
 
 function removeAllGamesFromLibrary() {
 	gameLibrary.splice(0, gameLibrary.length);
 	gameLibraryContainer.innerText = '';
+	displayStats();
+}
+
+function displayStats() {
+	const totalGamesAddedEl = filterBar.querySelector('#total-added');
+	const totalGamesCurrentEl = filterBar.querySelector('#total-current');
+	const completedGamesEl = filterBar.querySelector('#games-completed');
+	const notCompletedGamesEl = filterBar.querySelector('#games-not-completed');
+
+	const totalGames = Game.id;
+	const totalGamesCurrent = gameLibrary.length;
+	const completedGames = gameLibrary.filter(
+		(game) => game.completed === true,
+	).length;
+	const notCompletedGames = gameLibrary.filter(
+		(game) => game.completed === false,
+	).length;
+
+	totalGamesAddedEl.textContent = totalGames;
+	totalGamesCurrentEl.textContent = totalGamesCurrent;
+	completedGamesEl.textContent = completedGames;
+	notCompletedGamesEl.textContent = notCompletedGames;
 }
 
 // Event listeners
@@ -165,6 +197,10 @@ addGameFormBtn.addEventListener('click', () => {
 addGameForm.addEventListener('submit', addGameToLibrary);
 
 removeGamesBtn.addEventListener('click', removeAllGamesFromLibrary);
+
+filterBarBtn.addEventListener('click', toggleFilterBar);
+
+displayStats();
 
 // Helper event listener to display game library array
 document.addEventListener('keyup', (event) => {
