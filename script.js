@@ -11,9 +11,10 @@ const addGameFormBtn = document.querySelector('.modal-form button');
 const gameLibrary = [];
 
 // Game constructor
-function Game(name, hours, completed) {
+function Game(name, hours, platform, completed) {
 	this.name = name;
 	this.hours = hours;
+	this.platform = platform;
 	this.completed = completed;
 	this.id = Game.assignId();
 }
@@ -45,35 +46,30 @@ function closeModal() {
 // Add & Remove validation classes
 function addValidationClass() {
 	const requiredInputs = document.querySelectorAll(
-		'.modal-input:not(.checkbox) input',
+		'.modal-input:not(.checkbox) > *:nth-child(2)',
 	);
 	requiredInputs.forEach((input) => input.classList.add('validate'));
 }
 
 function removeValidationClass() {
 	const requiredInputs = document.querySelectorAll(
-		'.modal-input:not(.checkbox) input',
+		'.modal-input:not(.checkbox) > *:nth-child(2)',
 	);
 	requiredInputs.forEach((input) => input.classList.remove('validate'));
 }
 
 // Clean inputs
 function resetFormInputs() {
-	const formInputs = document.querySelectorAll(
-		'.modal-input:not(.checkbox) input',
-	);
-	const formCheckbox = document.querySelector('.modal-input.checkbox input');
-
-	formInputs.forEach((input) => (input.value = ''));
-	formCheckbox.checked = false;
+	addGameForm.reset();
 }
 
 function getUserInputs() {
 	const gameName = addGameForm.querySelector('#game-name').value;
 	const gameHours = addGameForm.querySelector('#game-hours').value || 0;
+	const gamePlatform = addGameForm.querySelector('#game-platform').value;
 	const gameCompleted = addGameForm.querySelector('#game-completion').checked;
 
-	return { gameName, gameHours, gameCompleted };
+	return { gameName, gameHours, gamePlatform, gameCompleted };
 }
 
 function renderNewCard(object) {
@@ -81,7 +77,8 @@ function renderNewCard(object) {
 	card.className = 'card';
 
 	const cardTitle = document.createElement('div');
-	const cardH3 = document.createElement('h3');
+	const platform = document.createElement('h3');
+	const platformIcon = document.createElement('span');
 	const removeBtn = document.createElement('span');
 	const cardBody = document.createElement('div');
 	const gameTitle = document.createElement('h4');
@@ -92,7 +89,8 @@ function renderNewCard(object) {
 	const completionCheckbox = document.createElement('input');
 
 	cardTitle.className = 'card-title';
-	cardH3.textContent = 'Video Game';
+	platform.textContent = `${object.platform} Game`;
+	platformIcon.className = object.platform.toLowerCase();
 	removeBtn.className = 'close';
 	cardBody.className = 'card-body';
 	gameTitle.id = 'game-title';
@@ -108,7 +106,8 @@ function renderNewCard(object) {
 	completionCheckbox.id = `game-status-${object.id}`;
 	completionCheckbox.checked = object.completed;
 
-	cardTitle.append(cardH3, removeBtn);
+	platform.prepend(platformIcon);
+	cardTitle.append(platform, removeBtn);
 	gameHoursContainer.appendChild(gameHours);
 	completionContainer.append(completionLabel, completionCheckbox);
 	cardBody.append(gameTitle, gameHoursContainer, completionContainer);
@@ -133,9 +132,9 @@ function addGameToLibrary(event) {
 	// Prevent default form submission
 	event.preventDefault();
 	// Get user inputs
-	const { gameName, gameHours, gameCompleted } = getUserInputs();
+	const { gameName, gameHours, gamePlatform, gameCompleted } = getUserInputs();
 	// Create new object
-	const newGame = new Game(gameName, gameHours, gameCompleted);
+	const newGame = new Game(gameName, gameHours, gamePlatform, gameCompleted);
 	// Add object ot the library array
 	gameLibrary.push(newGame);
 	// Render object to the screen
