@@ -8,7 +8,7 @@ Create a library app using `constructor` function and utilize prototypal inherit
 
 ## Links
 
-[Live app preview](https://hammerztein.github.io/odin-game-library/)
+[Live app preview](https://hammerztein.github.io/game-library/)
 
 ## Things I Used
 
